@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/black">
+    android:background="@color/black"
+    android:orientation="vertical">
 
     <!--IMAGE-->
     <FrameLayout
@@ -22,16 +21,16 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/txt_bg"
             android:layout_gravity="left|bottom"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/txt_bg"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/pinImage"
                 android:layout_width="40dp"
                 android:layout_height="20dp"
-                android:src="@drawable/location_on"/>
+                android:src="@drawable/location_on" />
 
             <TextView
                 android:id="@+id/pinText"
@@ -39,13 +38,13 @@
                 android:layout_height="20dp"
                 android:text="Bangkok"
                 android:textColor="@color/white"
-                android:textSize="15sp"/>
+                android:textSize="15sp" />
         </LinearLayout>
     </FrameLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="8dp"/>
+        android:layout_height="8dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -56,49 +55,49 @@
             android:id="@+id/cir_img1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ps_image"
             android:layout_alignParentLeft="true"
-            app:civ_border_width="2dp"/>
+            android:src="@drawable/ps_image"
+            app:civ_border_width="2dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="John Mayer"
-            android:textColor="@color/white"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/cir_img1"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:text="John Mayer"
+            android:textColor="@color/white" />
 
         <ImageButton
             android:id="@+id/icon1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/download"
-            android:background="@color/black"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/icon2"
+            android:background="@color/black"
             android:padding="10dp"
-            android:layout_toLeftOf="@id/icon2"/>
+            android:src="@drawable/download" />
 
         <ImageButton
             android:id="@+id/icon2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/favorite"
-            android:background="@color/black"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/icon3"
+            android:background="@color/black"
             android:padding="10dp"
-            android:layout_toLeftOf="@id/icon3"/>
+            android:src="@drawable/favorite" />
 
         <ImageButton
             android:id="@+id/icon3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/bookmark"
-            android:background="@color/black"
+                android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
+            android:background="@color/black"
             android:padding="10dp"
-            android:layout_alignParentRight="true"/>
+            android:src="@drawable/bookmark" />
     </RelativeLayout>
 
     <View
@@ -106,7 +105,7 @@
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@android:color/background_light"/>
+        android:background="@android:color/background_light" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -123,24 +122,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_camera_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_camera_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
 
 
@@ -154,35 +153,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_aperture_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_aperture_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="8dp"/>
+        android:layout_height="8dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <!-- Focal Length -->
         <LinearLayout
@@ -194,24 +193,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_focal_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_focal_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
 
 
@@ -225,35 +224,35 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_shutter_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_shutter_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="8dp"/>
+        android:layout_height="8dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <!-- ISO -->
         <LinearLayout
@@ -265,24 +264,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_iso_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_iso_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
 
 
@@ -296,24 +295,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
                 android:text="@string/details_dimensions_title"
                 android:textColor="@android:color/white"
                 android:textSize="17sp"
-                android:textStyle="bold"
-                android:fontFamily="sans-serif-medium"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
                 android:text="@string/details_dimensions_default"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:fontFamily="sans-serif-light"/>
+                android:textStyle="normal" />
         </LinearLayout>
     </LinearLayout>
 
@@ -327,16 +326,16 @@
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@android:color/background_light"/>
+            android:background="@android:color/background_light" />
 
-        <include layout="@layout/image_info"/>
+        <include layout="@layout/image_info" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@android:color/background_light"/>
+            android:background="@android:color/background_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -347,27 +346,27 @@
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/white"
                 android:background="@drawable/bg_btn"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/button_1"
                 android:textAllCaps="false"
-                android:text="@string/button_1"/>
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <Space
                 android:layout_width="8dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/white"
                 android:background="@drawable/bg_btn"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/button_2"
                 android:textAllCaps="false"
-                android:text="@string/button_2"/>
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
