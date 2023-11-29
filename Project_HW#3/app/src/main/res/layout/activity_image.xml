@@ -37,7 +37,7 @@
                 android:id="@+id/pinText"
                 android:layout_width="80dp"
                 android:layout_height="20dp"
-                android:text="@string/button_1"
+                android:text="Bangkok"
                 android:textColor="@color/white"
                 android:textSize="15sp"/>
         </LinearLayout>
