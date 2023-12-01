@@ -44,7 +44,7 @@ class DogDetailsActivity : ComponentActivity() {
 
         setContent {
             val dog_or_cat = AppPreferences(this@DogDetailsActivity).getOptions()
-            val icon_dog_or_cat = if(dog_or_cat == "dog") R.drawable.dog_icon else R.drawable.cat_icon
+            val icon_dog_or_cat = if(dog_or_cat == "Dog") R.drawable.dog_icon else R.drawable.cat_icon
             FinalProjectTheme {
                 val dogImages = dogViewModel.items.observeAsState(initial = emptyList())
                 val dogSound = MediaPlayer.create(LocalContext.current, R.raw.dogsound)
