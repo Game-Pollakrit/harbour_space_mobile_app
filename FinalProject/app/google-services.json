@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1045554565343",
+    "firebase_url": "https://dogandcat-b77ad-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "dogandcat-b77ad",
+    "storage_bucket": "dogandcat-b77ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1045554565343:android:b4448cf8adb1941850196a",
+        "android_client_info": {
+          "package_name": "com.example.finalproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmyuqMv78XzYRkWK4ReydrrsiouIE3FN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
