@@ -29,10 +29,10 @@ class UnsplashApiProvider {
   }
 
   fun fetchImages(cb: UnsplashResult) {
-    retrofit.fetchPhotos().enqueue(object : Callback<List<UnsplashItem>> {
+    retrofit.fetchPhotos().enqueue(object : Callback<UnsplashItem> {
       override fun onResponse(
-        call: Call<List<UnsplashItem>>,
-        response: Response<List<UnsplashItem>>
+        call: Call<UnsplashItem>,
+        response: Response<UnsplashItem>
       ) {
         if (response.isSuccessful && response.body() != null) {
           cb.onDataFetchedSuccess(response.body()!!)
@@ -42,7 +42,7 @@ class UnsplashApiProvider {
 
       }
 
-      override fun onFailure(call: Call<List<UnsplashItem>>, t: Throwable) {
+      override fun onFailure(call: Call<UnsplashItem>, t: Throwable) {
         cb.onDataFetchedFailed()
       }
     })

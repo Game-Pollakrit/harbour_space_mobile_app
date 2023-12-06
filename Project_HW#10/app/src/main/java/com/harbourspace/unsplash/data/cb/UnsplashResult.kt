@@ -4,7 +4,7 @@ import com.harbourspace.unsplash.data.model.UnsplashItem
 
 interface UnsplashResult {
 
-  fun onDataFetchedSuccess(images: List<UnsplashItem>)
+  fun onDataFetchedSuccess(images: UnsplashItem)
 
   fun onDataFetchedFailed()
 }

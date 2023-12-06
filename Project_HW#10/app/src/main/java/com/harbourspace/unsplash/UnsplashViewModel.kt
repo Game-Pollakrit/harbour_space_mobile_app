@@ -11,8 +11,8 @@ import com.harbourspace.unsplash.data.model.UnsplashItem
 private const val TAG = "UnsplashViewModel"
 class UnsplashViewModel : ViewModel(), UnsplashResult {
 
-  private val _items = MutableLiveData<List<UnsplashItem>>()
-  val items: LiveData<List<UnsplashItem>> = _items
+  private val _items = MutableLiveData<UnsplashItem>()
+  val items: LiveData<UnsplashItem> = _items
 
   private val provider by lazy {
     UnsplashApiProvider()
@@ -22,8 +22,8 @@ class UnsplashViewModel : ViewModel(), UnsplashResult {
     provider.fetchImages(this)
   }
 
-  override fun onDataFetchedSuccess(images: List<UnsplashItem>) {
-    Log.d(TAG, "onDataFetchedSuccess | Received ${images.size} images")
+  override fun onDataFetchedSuccess(images: UnsplashItem) {
+    Log.d(TAG, "onDataFetchedSuccess | Received images")
     _items.value = images
   }
 

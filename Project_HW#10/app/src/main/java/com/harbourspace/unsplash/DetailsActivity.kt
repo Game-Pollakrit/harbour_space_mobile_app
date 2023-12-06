@@ -3,8 +3,8 @@ package com.harbourspace.unsplash
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,48 +14,40 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.graphics.toColorInt
 import coil.compose.AsyncImage
 import com.harbourspace.unsplash.ui.theme.UnsplashTheme
-import com.harbourspace.unsplash.utils.EXTRA_IMAGE
 
 class DetailsActivity : ComponentActivity() {
 
+  private val unsplashViewModel: UnsplashViewModel by viewModels()
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    val url = if (intent.hasExtra(EXTRA_IMAGE)) {
-      intent.extras?.get(EXTRA_IMAGE)
-    } else {
-      ""
-    }
+    unsplashViewModel.fetchImages()
 
     setContent {
       UnsplashTheme {
+        val unsplashImages = unsplashViewModel.items.observeAsState()
+        val detail = unsplashImages.value
         LazyColumn {
           item {
             Box {
@@ -63,7 +55,7 @@ class DetailsActivity : ComponentActivity() {
                 modifier = Modifier
                   .fillMaxWidth()
                   .height(250.dp),
-                model = url,
+                model = detail?.urls?.full,
                 contentScale = ContentScale.Crop,
                 contentDescription = stringResource(id = R.string.description_image_preview)
               )
@@ -80,7 +72,7 @@ class DetailsActivity : ComponentActivity() {
                   contentDescription = null,
                   tint = Color.White
                 )
-                location(title = "Bangkok")
+                location(title = detail?.location?.country.toString())
               }
             }
           }
@@ -94,16 +86,16 @@ class DetailsActivity : ComponentActivity() {
                     .align(Alignment.CenterStart),
                   verticalAlignment = Alignment.CenterVertically
                 ) {
-                  Image(
+                  AsyncImage(
                     modifier = Modifier
                       .width(40.dp)
                       .height(40.dp)
                       .clip(RoundedCornerShape(15.dp)),
-                    painter = painterResource(id = R.drawable.ps_image),
+                    model = detail?.user?.profile_image?.large,
                     contentScale = ContentScale.Crop,
                     contentDescription = null
                   )
-                  Name(title = "John Mayer")
+                  Name(title = detail?.user?.name.toString())
                 }
 
                 Row(
@@ -147,7 +139,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_camera_title),
-                  subtitle = stringResource(id = R.string.details_camera_default)
+                  subtitle = "${detail?.exif?.make} ${detail?.exif?.model}"
                 )
               }
 
@@ -156,7 +148,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_aperture_title),
-                  subtitle = stringResource(id = R.string.details_aperture_default)
+                  subtitle = detail?.exif?.aperture.toString()
                 )
               }
             }
@@ -171,7 +163,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_focal_title),
-                  subtitle = stringResource(id = R.string.details_focal_default)
+                  subtitle = detail?.exif?.focal_length.toString()
                 )
               }
 
@@ -180,7 +172,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_shutter_title),
-                  subtitle = stringResource(id = R.string.details_shutter_default)
+                  subtitle = detail?.exif?.exposure_time.toString()
                 )
               }
             }
@@ -195,7 +187,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_iso_title),
-                  subtitle = stringResource(id = R.string.details_iso_default)
+                  subtitle = detail?.exif?.iso.toString()
                 )
               }
 
@@ -204,7 +196,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_dimensions_title),
-                  subtitle = stringResource(id = R.string.details_dimensions_default)
+                  subtitle = "${detail?.width}x${detail?.height}"
                 )
               }
             }
@@ -231,7 +223,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_views_title),
-                  subtitle = stringResource(id = R.string.details_views_default)
+                  subtitle = detail?.views.toString()
                 )
               }
 
@@ -240,7 +232,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_downloads_title),
-                  subtitle = stringResource(id = R.string.details_downloads_default)
+                  subtitle = detail?.downloads.toString()
                 )
               }
 
@@ -249,7 +241,7 @@ class DetailsActivity : ComponentActivity() {
               ) {
                 AddImageInformation(
                   title = stringResource(id = R.string.details_likes_title),
-                  subtitle = stringResource(id = R.string.details_likes_default)
+                  subtitle = detail?.likes.toString()
                 )
               }
             }
@@ -258,8 +250,8 @@ class DetailsActivity : ComponentActivity() {
             Row(
               modifier = Modifier.padding(16.dp)
             ) {
-              button("Bangkok")
-              button("Thailand")
+              button(detail?.location?.city.toString())
+              button(detail?.location?.country.toString())
             }
           }
         }
@@ -304,7 +296,6 @@ fun Name(
 fun location(
   title: String,
 ) {
-
   Text(
     text = title,
     fontSize = 17.sp,

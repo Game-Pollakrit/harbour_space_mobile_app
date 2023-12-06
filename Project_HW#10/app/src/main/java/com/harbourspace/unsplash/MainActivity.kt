@@ -30,46 +30,11 @@ import com.harbourspace.unsplash.utils.EXTRA_IMAGE
 
 class MainActivity : ComponentActivity() {
 
-  private val unsplashViewModel: UnsplashViewModel by viewModels()
-
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    unsplashViewModel.fetchImages()
-
     setContent {
       UnsplashTheme {
-        val unsplashImages = unsplashViewModel.items.observeAsState(emptyList())
-
-        LazyColumn {
-          items(unsplashImages.value) { image ->
-            Card(
-              modifier = Modifier
-                .fillMaxWidth()
-                .height(250.dp)
-                .padding(8.dp)
-                .clip(RoundedCornerShape(10.dp))
-                .clickable {
-                  val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-                  intent.putExtra(EXTRA_IMAGE, image.urls.full)
-                  startActivity(intent)
-                }
-            ) {
-              Column(
-                modifier = Modifier
-                  .fillMaxSize()
-                  .padding(12.dp),
-                verticalArrangement = Arrangement.Bottom,
-                horizontalAlignment = Alignment.CenterHorizontally
-              ) {
-                AsyncImage(
-                  model = image.urls.full,
-                  contentDescription = null,
-                  contentScale = ContentScale.Crop)
-              }
-            }
-          }
-        }
       }
     }
   }
