@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
@@ -48,6 +50,10 @@ class DetailsActivity : ComponentActivity() {
       UnsplashTheme {
         val unsplashImages = unsplashViewModel.items.observeAsState()
         val detail = unsplashImages.value
+        val tags_size = detail?.tags_preview?.size ?:0
+        val tags_preview = List(tags_size) {
+            index -> detail?.tags_preview?.get(index)?.title
+        }
         LazyColumn {
           item {
             Box {
@@ -247,11 +253,12 @@ class DetailsActivity : ComponentActivity() {
             }
           }
           item {
-            Row(
+            LazyRow(
               modifier = Modifier.padding(16.dp)
             ) {
-              button(detail?.location?.city.toString())
-              button(detail?.location?.country.toString())
+              items(tags_preview) { image ->
+                button(image.toString())
+              }
             }
           }
         }
